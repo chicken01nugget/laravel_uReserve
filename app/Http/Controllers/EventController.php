@@ -82,7 +82,14 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        $event = Event::findOrFail($event->id);//このEventはEventモデル
+        $eventDate = $event->eventDate;
+        $eventTime = $event->startTime;
+        $endTime = $event->endTime;
+
+        // dd($eventDate,$eventTime,$endTime);
+
+        return view('manager.events.show',compact('event','eventDate','eventTime','endTime'));
     }
 
     /**
