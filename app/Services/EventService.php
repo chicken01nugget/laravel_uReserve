@@ -15,6 +15,14 @@ class EventService {
         ->exists();
     }
 
+    public static function countEventDuplication($eventDate,$startTime,$endTime){
+        return $check = DB::table('events')
+        ->whereDate('start_date', $eventDate)
+        ->whereTime('end_date', '>' , $startTime)
+        ->whereTime('start_date', '<' , $endTime)
+        ->count();
+    }
+
     public static function joinDateAndTime($date,$time){
         $join = $date . " " . $time;
         return $dateTime = Carbon::createFromFormat('Y-m-d H:i', $join);

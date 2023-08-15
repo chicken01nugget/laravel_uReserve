@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            イベント管理
+            過去のイベント一覧
         </h2>
     </x-slot>
 
@@ -17,12 +17,7 @@
                             </div>
                         @endif
 
-                        <div class="flex justify-between">
-                            <button onclick="location.href='{{ route('events.past') }}'"
-                                class="flex mb-4 ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">過去のイベント一覧</button>
-                            <button onclick="location.href='{{ route('events.create') }}'"
-                                class="flex mb-4 ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">新規登録</button>
-                        </div>
+
 
                         <div class="w-full mx-auto overflow-auto">
                             <table class="table-auto w-full text-left whitespace-no-wrap">
@@ -55,9 +50,7 @@
                                 <tbody>
                                     @foreach ($events as $event)
                                         <tr>
-                                            <td class="text-blue-500 px-4 py-3"><a
-                                                    href="{{ route('events.show', ['event' => $event->id]) }}">{{ $event->name }}</a>
-                                            </td>
+                                            <td class="text-blue-500 px-4 py-3"><a href="{{ route('events.show', ['event'=> $event->id]) }}">{{  $event->name  }}</a></td>
                                             <td class="px-4 py-3">{{ $event->start_date }}</td>
                                             <td class="px-4 py-3">{{ $event->end_date }}</td>
                                             <td class="px-4 py-3">after</td>
